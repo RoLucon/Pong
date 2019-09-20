@@ -17,9 +17,16 @@ import java.awt.Graphics;
  */
 public class Match implements State{
     private Players playerOne, playerTwo;
+
+    public Match() {
+        
+    }
+    
     
     @Override
     public void init() {
+        this.playerOne = new Players();
+        this.playerTwo = new Players();
     }
 
     @Override
@@ -32,11 +39,11 @@ public class Match implements State{
         g.fillRect(0, 0, Display.WIDTH, Display.HEIGHT);
             
         g.setColor(Color.WHITE);
-        Font font = new Font("Arial", Font.PLAIN, 20);
+        Font font = new Font("Arial", Font.PLAIN, 50);
         g.setFont(font);
         
-        g.drawString(playerOne.getS(), Display.WIDTH/4, 20);
-        g.drawString(playerTwo.getS(), Display.WIDTH/4*3, 20);
+        g.drawString(playerOne.getS(), Display.WIDTH/4, 50);
+        g.drawString(playerTwo.getS(), Display.WIDTH/4*3, 50);
     }
 
     @Override
@@ -49,6 +56,11 @@ public class Match implements State{
 
     @Override
     public void keyTyped(int code) {
+    }
+    
+    @Override
+    public void dispose(){
+     this.dispose();
     }
     
 }

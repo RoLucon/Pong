@@ -18,5 +18,5 @@ public interface State {
     void keyPressed(int code);
     void keyRelesed(int code);
     void keyTyped(int code);
-    
+    void dispose();
 }

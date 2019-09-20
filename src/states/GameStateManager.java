@@ -14,14 +14,23 @@ import java.awt.event.KeyListener;
  * @author Rogerio
  */
 public class GameStateManager implements KeyListener{
-    public static final int NUMBER_STATES = 1;
+    public enum States{Menu, Match};
+    public static final int NUMBER_STATES = 2;
     public static State[] states = new State[NUMBER_STATES];
     public static int currentState = 0;
     
-    public static void setState(int state){
-        states[state].init();
-        currentState = state;
-        
+    public static void setState(States state){
+        changeState(state);
+        if(currentState == 0){
+            states[1].init();
+            currentState = 1;
+            states[0].dispose();
+        }else{
+            states[0].init();
+            currentState = 0;
+            states[1].dispose();
+        }
+
     }
     
     public static void nextState(){
@@ -29,8 +38,22 @@ public class GameStateManager implements KeyListener{
         states[currentState].init();
     }
     
+    private static void changeState(States state){
+        int aux;
+        if(currentState == 0){
+            aux = 1;
+        }else{
+            aux= 0;
+        }
+        switch(state){
+            case Match:
+                states[aux] = new Match();
+        }
+    }
+    
     public GameStateManager() {
         states[0] = new Menu();
+        states[1] = new Match();
     }
     
     public void update(){
@@ -59,5 +82,4 @@ public class GameStateManager implements KeyListener{
     public void keyReleased(KeyEvent e) {
         states[currentState].keyRelesed(e.getKeyCode());
     }
-    
 }

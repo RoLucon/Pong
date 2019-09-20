@@ -29,7 +29,7 @@ public class Players {
     }
     
     public void down(){
-        if(posY < Display.HEIGHT - 30){
+        if(posY < Display.HEIGHT - 50){
             posY++;
         }
     }
