@@ -32,12 +32,7 @@ public class GameStateManager implements KeyListener{
         }
 
     }
-    
-    public static void nextState(){
-        currentState++;
-        states[currentState].init();
-    }
-    
+
     private static void changeState(States state){
         int aux;
         if(currentState == 0){

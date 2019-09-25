@@ -18,7 +18,7 @@ import states.GameStateManager;
 public class Game implements Runnable{
     
     boolean gameOn = false;
-    int FPS = 60;
+    int FPS = 30;
     double TIME_P_TICK = 1000000000 / FPS;
             
     private Display displey;

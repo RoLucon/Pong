@@ -89,7 +89,7 @@ public class Menu implements State{
     public void keyPressed(int code) {
         if(code == 10){
             if(index == 0){
-                GameStateManager.nextState();
+                GameStateManager.setState(GameStateManager.States.Match);
             }else if(index == 2){
                 System.exit(0);
             }
@@ -114,4 +114,9 @@ public class Menu implements State{
 
     @Override
     public void keyTyped(int code) {}
+
+    @Override
+    public void dispose() {
+
+    }
 }

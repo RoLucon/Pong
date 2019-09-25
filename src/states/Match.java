@@ -6,7 +6,8 @@
 package states;
 
 import game.Display;
-import game.Players;
+import gameObjects.Ball;
+import gameObjects.Players;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -17,6 +18,8 @@ import java.awt.Graphics;
  */
 public class Match implements State{
     private Players playerOne, playerTwo;
+    private Ball ball;
+    private static final int INIT_POS = 30;
 
     public Match() {
         
@@ -25,12 +28,15 @@ public class Match implements State{
     
     @Override
     public void init() {
-        this.playerOne = new Players();
-        this.playerTwo = new Players();
+        this.playerOne = new Players(INIT_POS - 5);
+        this.playerTwo = new Players(Display.WIDTH - INIT_POS);
+        this.ball = new Ball();
+
     }
 
     @Override
     public void update() {
+        ball.update();
     }
 
     @Override
@@ -41,13 +47,29 @@ public class Match implements State{
         g.setColor(Color.WHITE);
         Font font = new Font("Arial", Font.PLAIN, 50);
         g.setFont(font);
-        
+
+        g.fillRect(playerOne.getPosX(), playerOne.getPosY(), playerOne.getWidth(), playerOne.getHeight());
+        g.fillRect(playerTwo.getPosX(), playerTwo.getPosY(), playerTwo.getWidth(), playerTwo.getHeight());
+
+        g.fillRect(ball.getPosX(), ball.getPosY(), ball.getWidth(), ball.getHeight());
+
         g.drawString(playerOne.getS(), Display.WIDTH/4, 50);
         g.drawString(playerTwo.getS(), Display.WIDTH/4*3, 50);
     }
 
     @Override
     public void keyPressed(int code) {
+        if(code == 38){
+            playerOne.up();
+        }else if(code == 40){
+            playerOne.down();
+        }
+        if(code == 104){
+            playerTwo.up();
+        }else if(code == 98){
+            playerTwo.down();
+        }
+
     }
 
     @Override
