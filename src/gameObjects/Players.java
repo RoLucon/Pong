@@ -13,6 +13,34 @@ import game.Display;
  */
 public class Players extends GameObjects{
     private int score = 0;
+    private int velocity = 0;
+    private boolean up = false, down = false;
+
+    @Override
+    public void update() {
+        if(velocity > 0){
+            velocity --;
+        }else if(velocity < 0){
+            velocity++;
+        }
+
+        if(up){
+            velocity += 2;
+        }else if(down){
+            velocity -= 2;
+        }
+        if(velocity != 0){
+            if(posY >= 30 && posY <= Display.HEIGHT - 50 - height) {
+                posY -= velocity;
+            }
+        }
+        if(posY < 30){
+            posY = 30;
+        }else if(posY > Display.HEIGHT - 50 - height){
+            posY = Display.HEIGHT - 50 - height;
+        }
+
+    }
 
     public Players() {
         width = 20;
@@ -29,15 +57,11 @@ public class Players extends GameObjects{
     }
     
     public void up(){
-        if(posY > 30){
-            posY -= speed;
-        }
+        velocity += 2;
     }
     
     public void down(){
-        if(posY < Display.HEIGHT - 50 - height){
-            posY += speed;
-        }
+        velocity -= 2;
     }
     
     public void score(){
@@ -56,4 +80,14 @@ public class Players extends GameObjects{
         this.score = score;
     }
 
+    public void toScore() {
+        score++;
+    }
+    public void setUp(boolean up) {
+        this.up = up;
+    }
+
+    public void setDown(boolean down) {
+        this.down = down;
+    }
 }

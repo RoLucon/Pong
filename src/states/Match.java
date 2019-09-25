@@ -24,8 +24,7 @@ public class Match implements State{
     public Match() {
         
     }
-    
-    
+
     @Override
     public void init() {
         this.playerOne = new Players(INIT_POS - 5);
@@ -37,6 +36,26 @@ public class Match implements State{
     @Override
     public void update() {
         ball.update();
+        playerOne.update();
+        playerTwo.update();
+
+        if(ball.getPosX() <= playerOne.getPosX() + playerOne.getWidth()){
+            if (ball.getPosY()>= playerOne.getPosY() && ball.getPosY()<= playerOne.getPosY() + playerOne.getHeight()){
+                ball.changeDirection();
+            }
+        }
+        if(ball.getPosX() + ball.getWidth() >= playerTwo.getPosX()){
+            if (ball.getPosY()>= playerTwo.getPosY() && ball.getPosY()<= playerTwo.getPosY() + playerTwo.getHeight()){
+                ball.changeDirection();
+            }
+        }
+        if(ball.getPosX() < 0){
+            playerTwo.toScore();
+            ball.reset();
+        }else if(ball.getPosX() > Display.WIDTH){
+            playerOne.toScore();
+            ball.reset();
+        }
     }
 
     @Override
@@ -60,20 +79,30 @@ public class Match implements State{
     @Override
     public void keyPressed(int code) {
         if(code == 38){
-            playerOne.up();
+            playerOne.setUp(true);
         }else if(code == 40){
-            playerOne.down();
+            playerOne.setDown(true);
         }
         if(code == 104){
-            playerTwo.up();
+            playerTwo.setUp(true);
         }else if(code == 98){
-            playerTwo.down();
+            playerTwo.setDown(true);
         }
 
     }
 
     @Override
     public void keyRelesed(int code) {
+        if(code == 38){
+            playerOne.setUp(false);
+        }else if(code == 40){
+            playerOne.setDown(false);
+        }
+        if(code == 104){
+            playerTwo.setUp(false);
+        }else if(code == 98){
+            playerTwo.setDown(false);
+        }
     }
 
     @Override

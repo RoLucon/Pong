@@ -6,6 +6,8 @@ public abstract class GameObjects {
     protected int speed;
     private int pivot;
 
+    public abstract void update();
+
     public int[] getPivot(){
         return new int[] {(posX -width), (posY - height)};
     }
