@@ -51,11 +51,9 @@ public class Ball extends GameObjects {
         }
     }
 
-
     public void reset(){
         posX = Display.WIDTH/2 - width/2;
         posY = Display.HEIGHT/2 - height/2;
         angulo = new Random().nextInt(360);
     }
-
 }

@@ -116,5 +116,4 @@ public class Match implements State{
     public void dispose(){
         this.dispose();
     }
-    
 }

@@ -47,7 +47,6 @@ public class SoundManager {
         select.setFramePosition(0);
         select.start();
     }
-
 }
 //LINK SOUNDS CREDITS
 //https://freesound.org/people/jeckkech/sounds/391663/
