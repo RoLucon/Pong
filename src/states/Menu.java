@@ -14,10 +14,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import game.Game;
 import javafx.scene.input.KeyCode;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import jdk.nashorn.internal.ir.TryNode;
+import sound.SoundManager;
 
 /**
  *
@@ -89,6 +92,7 @@ public class Menu implements State{
     public void keyPressed(int code) {
         if(code == 10){
             if(index == 0){
+                SoundManager.playSelect();
                 GameStateManager.setState(GameStateManager.States.Match);
             }else if(index == 2){
                 System.exit(0);

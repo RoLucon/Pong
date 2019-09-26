@@ -9,6 +9,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import sound.SoundManager;
 import states.GameStateManager;
 
 /**
@@ -16,20 +18,22 @@ import states.GameStateManager;
  * @author rogerio.slucon
  */
 public class Game implements Runnable{
-    
+    public SoundManager soundManager;
+
     boolean gameOn = false;
     int FPS = 30;
     double TIME_P_TICK = 1000000000 / FPS;
-            
+
     private Display displey;
     private Thread thread;
-    
+
     private GameStateManager gSM;
     
     public Game() {
         displey = new Display();
         gSM = new GameStateManager();
         displey.setKeyListener(gSM);
+        soundManager = new SoundManager();
     } 
 
     @Override

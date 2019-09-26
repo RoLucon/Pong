@@ -6,6 +6,7 @@
 package gameObjects;
 
 import game.Display;
+import sound.SoundManager;
 
 /**
  *
@@ -63,10 +64,6 @@ public class Players extends GameObjects{
     public void down(){
         velocity -= 2;
     }
-    
-    public void score(){
-        score++;
-    }
 
     public int getScore() {
         return score;
@@ -81,6 +78,7 @@ public class Players extends GameObjects{
     }
 
     public void toScore() {
+        SoundManager.playScore();
         score++;
     }
     public void setUp(boolean up) {

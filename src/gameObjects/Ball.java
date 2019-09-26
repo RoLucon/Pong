@@ -1,6 +1,7 @@
 package gameObjects;
 
 import game.Display;
+import sound.SoundManager;
 import states.Match;
 
 import java.util.Random;
@@ -16,7 +17,6 @@ public class Ball extends GameObjects {
     }
 
     public void update(){
-        System.out.println(angulo);
         if (posY < 30){
             posY = 30;
             changeDirection2();
@@ -27,9 +27,10 @@ public class Ball extends GameObjects {
         posX -= (int) (Math.cos(Math.toRadians(angulo))* speed);
         posY -= (int) (Math.sin(Math.toRadians(angulo))* speed);
     }
-    
+
     //Ajustar Alteracao de angulos Para metodo unico
     public void changeDirection() {
+        SoundManager.playCollision();
         angulo = 180 - angulo;
         if (angulo > 360) {
             angulo -= 360;
@@ -40,6 +41,7 @@ public class Ball extends GameObjects {
     }
 
     public void changeDirection2() {
+        SoundManager.playCollision();
         if (angulo >= Math.PI) {
             angulo = (float) (4 * Math.PI - angulo);
         }
