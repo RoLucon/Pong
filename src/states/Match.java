@@ -88,6 +88,9 @@ public class Match implements State{
         }else if(code == 98){
             playerTwo.setDown(true);
         }
+        if(code == 10){
+            ball.reset();
+        }
 
     }
 
@@ -111,7 +114,7 @@ public class Match implements State{
     
     @Override
     public void dispose(){
-     this.dispose();
+        this.dispose();
     }
     
 }
