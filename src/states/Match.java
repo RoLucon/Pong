@@ -39,13 +39,13 @@ public class Match implements State{
         playerOne.update();
         playerTwo.update();
 
-        if(ball.getPosX() <= playerOne.getPosX() + playerOne.getWidth()){
-            if (ball.getPosY()>= playerOne.getPosY() && ball.getPosY()<= playerOne.getPosY() + playerOne.getHeight()){
+        if(ball.getPosX() < playerOne.getPosX() + playerOne.getWidth()){
+            if (ball.getPosY()> playerOne.getPosY() && ball.getPosY()< playerOne.getPosY() + playerOne.getHeight()){
                 ball.changeDirection();
             }
         }
-        if(ball.getPosX() + ball.getWidth() >= playerTwo.getPosX()){
-            if (ball.getPosY()>= playerTwo.getPosY() && ball.getPosY()<= playerTwo.getPosY() + playerTwo.getHeight()){
+        if(ball.getPosX() + ball.getWidth() > playerTwo.getPosX()){
+            if (ball.getPosY()> playerTwo.getPosY() && ball.getPosY()< playerTwo.getPosY() + playerTwo.getHeight()){
                 ball.changeDirection();
             }
         }

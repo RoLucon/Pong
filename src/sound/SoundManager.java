@@ -34,18 +34,30 @@ public class SoundManager {
     }
 
     public static void playCollision(){
-        collision.setFramePosition(0);
-        collision.start();
+        try {
+            collision.setFramePosition(0);
+            collision.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void playScore(){
-        score.setFramePosition(0);
-        score.start();
+        try {
+            score.setFramePosition(0);
+            score.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void playSelect(){
-        select.setFramePosition(0);
-        select.start();
+        try {
+            select.setFramePosition(0);
+            select.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 //LINK SOUNDS CREDITS
